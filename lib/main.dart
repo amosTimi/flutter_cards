@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'Quote.dart';
+import 'quote_card.dart';
 
 void main() => runApp(MaterialApp(
   debugShowCheckedModeBanner: false,
@@ -26,34 +26,6 @@ class _QuotesState extends State<Quotes> {
     Quote(quote: 'A double minded man is unstable in all his ways', author: 'Apostle James'),
   ];
 
-  Widget quoteTemplate(quote){
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget> [
-            Text(
-              quote.quote,
-              style: TextStyle(
-                color: Colors.grey[800],
-                fontSize: 18.0,
-              ),
-            ),
-            SizedBox(height: 6.0,),
-            Text(
-              quote.author,
-              style: TextStyle(
-                color: Colors.grey[700],
-                fontSize: 12.0,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,9 +39,10 @@ class _QuotesState extends State<Quotes> {
         padding: EdgeInsets.fromLTRB(10.0, 20.0, 10.0, 0.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: quotes.map((quote) => quoteTemplate(quote)).toList(),
+          children: quotes.map((quote) => QuoteCard(quote: quote)).toList(),
         ),
       ),
     );
   }
 }
+
